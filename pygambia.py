@@ -1,7 +1,7 @@
 import pygame
 import serial
 import sys
-#import json
+import json
 
 # Configure a porta e a taxa de transmissão
 porta = '/dev/ttyUSB0' # Altere para a porta correta
@@ -39,12 +39,12 @@ while running:
     # Lê a resposta do Arduino
     if ser.in_waiting > 0:
         resposta = ser.readline().decode('utf-8').rstrip()
-        #r = ser.read()
+
         print(resposta)
-        #json.loads(resposta)
-    if resposta=='A':
+        json.loads(resposta)
+    if json['s']=='esq':
         rect_x += rect_speed
-    if resposta=='B':
+    if json['s']=='dir':
         rect_x -= rect_speed
 
     # Limitar o retângulo à tela
